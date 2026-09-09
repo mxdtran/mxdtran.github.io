@@ -1,7 +1,26 @@
 body {
-    background-color:rgb(234, 231, 231);
+    background-color:rgb(219, 219, 219);
 }
 
-p,h1,h2 {
+h1 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
     font-family: Calibri, Arial, sans-serif;
+}
+
+.header {
+    background:lab(24.16% -4.81 -6.52);
+    padding: 8px 10px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 2em;
+}
+
+.header p {
+    color:rgb(167, 167, 167);
+    font-size: 1em;
 }
