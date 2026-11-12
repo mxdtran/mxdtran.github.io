@@ -1,0 +1,448 @@
+:root {
+  /* Colors */
+  --wall: #E6E9E4;
+  --paper: #F8F8F5;
+  --ink: #1B2127;
+  --muted: #5A6570;
+  --accent: #2D4FD6;
+  --line: #C9CEC8;
+
+  /* Fonts */
+  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --body: "Literata", Georgia, "Times New Roman", serif;
+
+  /* Keeps content clear of phone notches and system bars */
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
+}
+
+/* Dark mode: follows the visitor's device setting */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --wall: #171B1F;
+    --paper: #222830;
+    --ink: #E9ECEF;
+    --muted: #9AA5B0;
+    --accent: #7C95FF;
+    --line: #38404A;
+    color-scheme: dark;
+  }
+}
+
+/* Dark mode: forced on with data-theme="dark" on the <html> tag */
+:root[data-theme="dark"] {
+  --wall: #171B1F;
+  --paper: #222830;
+  --ink: #E9ECEF;
+  --muted: #9AA5B0;
+  --accent: #7C95FF;
+  --line: #38404A;
+  color-scheme: dark;
+}
+
+
+/* 2. Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--wall);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+h2 {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  margin: 0;
+  letter-spacing: -.01em;
+}
+
+
+/* 3. Layout
+   -------------------------------------------------------------------------- */
+
+.wrap {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+
+/* 4. Header and navigation
+   -------------------------------------------------------------------------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+header a {
+  font-family: var(--display);
+  text-decoration: none;
+}
+
+.mark {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: var(--muted);
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Light / dark mode switch */
+.theme-toggle {
+  font: inherit;
+  font-family: var(--display);
+  font-size: .9rem;
+  background: none;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .2rem .9rem;
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+
+
+/* 5. Hero
+   -------------------------------------------------------------------------- */
+
+.hero {
+  --fade: clamp(2rem, 5vw, 3rem);
+  /* how tall the fade-out zone is */
+  position: relative;
+  isolation: isolate;
+  color: #fff;
+  min-height: min(34vh, 18rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 5vw, 4rem) calc(var(--fade) + 1rem);
+  margin-bottom: 1rem;
+}
+
+/* The image sits on its own layer so only the picture fades, not the text.
+   To change the image, replace images/hero.jpg (or edit the path below).
+   The dark gradient keeps the white text readable on any photo.
+   If the image is missing, you just see the dark color behind the name. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to bottom, rgba(10, 14, 18, .35), rgba(10, 14, 18, .6)),
+    url("images/background.png") center / cover no-repeat,
+    var(--ink);
+  /* Fade the bottom edge (and the left and right edges slightly) into the page */
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent),
+    linear-gradient(to right, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to bottom, #000 calc(100% - var(--fade)), transparent),
+    linear-gradient(to right, transparent, #000 2rem, #000 calc(100% - 2rem), transparent);
+  mask-composite: intersect;
+}
+
+h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2rem, 10vw, 9rem);
+  line-height: .92;
+  letter-spacing: -.04em;
+  margin: 0;
+}
+
+h3 {
+  font-weight: 350;
+}
+
+.hero p {
+  max-width: 34rem;
+  margin: 2rem 0 0;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+.intro {
+  margin: 0 0 3rem;
+  color: var(--muted);
+  font-size: 1.2rem;
+}
+
+/* 6. Gallery
+   -------------------------------------------------------------------------- */
+
+/* Filter tabs (All work / Paintings / Design) */
+.filters {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0 0 2rem;
+  font-family: var(--display);
+}
+
+.filters button {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: .25rem 0;
+  color: var(--muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.filters button:hover {
+  color: var(--ink);
+}
+
+.filters button[aria-pressed="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* Grid: columns of at least 16rem, up to 3 */
+.works {
+  columns: 3 16rem;
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  padding-bottom: 4rem;
+}
+
+figure {
+  margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+  break-inside: avoid;
+}
+
+figure[hidden] {
+  display: none;
+  /* used by the filter tabs */
+}
+
+/* Artwork frame (the clickable button around each image) */
+.piece {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: zoom-in;
+  background: var(--paper);
+  padding: clamp(.75rem, 2vw, 1.25rem);
+  box-shadow: 0 1px 0 var(--line), 0 18px 30px -22px rgba(0, 0, 0, .45);
+}
+
+.piece:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.piece svg,
+.piece img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Wall label under each piece */
+figcaption {
+  margin-top: .9rem;
+  font-size: .9rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+figcaption b {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+
+/* 7. About
+   -------------------------------------------------------------------------- */
+
+section.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding: 4rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.about p {
+  margin: 0 0 1.1rem;
+  max-width: 38rem;
+}
+
+/* Exhibitions / education list */
+.about dl {
+  margin: 1.5rem 0 0;
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: .4rem 1rem;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.about dt {
+  color: var(--ink);
+}
+
+.about dd {
+  margin: 0;
+}
+
+
+/* 8. Contact
+   -------------------------------------------------------------------------- */
+
+.contact {
+  padding: 4rem 0 5rem;
+  border-top: 1px solid var(--line);
+}
+
+.contact a.mail {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--display);
+  font-weight: 350;
+  font-size: clamp(0.75rem, 2.5vw, 1.5rem);
+  letter-spacing: -.02em;
+  color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: .2em;
+}
+
+
+/* 9. Footer
+   -------------------------------------------------------------------------- */
+
+footer {
+  padding: 0 0 2rem;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+
+/* 10. Lightbox (enlarged view)
+   -------------------------------------------------------------------------- */
+
+dialog {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(92vw, 56rem);
+  width: 100%;
+  max-height: 92vh;
+  color: var(--ink);
+}
+
+dialog::backdrop {
+  background: rgba(10, 14, 18, .82);
+}
+
+.lb {
+  background: var(--paper);
+  padding: clamp(.75rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 92vh;
+}
+
+.lb svg,
+.lb img {
+  width: 100%;
+  height: auto;
+  max-height: 68vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lb .cap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.lb .cap b {
+  font-family: var(--display);
+  color: var(--ink);
+  font-size: 1.15rem;
+  display: block;
+}
+
+.lb button {
+  font: inherit;
+  font-family: var(--display);
+  background: var(--ink);
+  color: var(--paper);
+  border: 0;
+  padding: .55rem 1.1rem;
+  cursor: pointer;
+}
+
+
+/* 11. Responsive and accessibility
+   -------------------------------------------------------------------------- */
+
+/* Phones: stack the About section */
+@media (max-width: 42rem) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Visitors who prefer less motion: no smooth scrolling */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

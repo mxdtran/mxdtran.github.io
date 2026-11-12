@@ -1,21 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Megan Tran</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="header">
-        <h1>Megan Tran</h1>
-        <p>Year: Junior | Major: Computer Science | Minor: Design</p>
-    </div>
 
-    <h1>Projects</h1>
-    <h2>Test</h2>
-    <p>text here</p>
-    <h1>Volunteering</h1>
-    <p>text here</p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Megan Tran - Portfolio</title>
+  <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t) } catch (e) { }</script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <a class="mark" href="#top">Megan Tran</a>
+      <nav aria-label="Main"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a><button
+          type="button" class="theme-toggle" id="themeToggle">Dark</button></nav>
+    </header>
+
+    <main id="top">
+      <div class="hero">
+        <h1>Megan Tran</h1>
+        <h3><i>"The stems of my thought beget stems that beget stems that are finer still."</i></h3>
+      </div>
+
+      <p class="intro">A computer science junior pursuing a certificate in UX (who also happens to dabble in
+        illustration on the side).</p>
+
+      <div class="filters" role="group" aria-label="Filter work">
+        <button type="button" data-f="all" aria-pressed="true">All work</button>
+        <button type="button" data-f="art" aria-pressed="false">Illustration</button>
+        <button type="button" data-f="design" aria-pressed="false">Design</button>
+      </div>
+
+      <div class="works" id="work">
+        <figure data-cat="art">
+          <button class="piece" data-t="Aozaki" data-m="Original character artwork">
+            <img src="images/tryagain.png" alt="artwork of a character named Aozaki Mizuo">
+          </button>
+          <figcaption><b>Aozaki</b>Original character artwork</figcaption>
+        </figure>
+
+        <figure data-cat="art">
+          <button class="piece" data-t="Ramona I" data-m="Art trade with a friend">
+            <img src="images/ramona.png" alt="artwork of a character named Ramona">
+          </button>
+          <figcaption><b>Ramona I</b>Art trade with a friend</figcaption>
+        </figure>
+
+        <figure data-cat="art">
+          <button class="piece" data-t="Zya & Lyra" data-m="Art trade with a friend">
+            <img src="images/zyalyraresize.png" alt="artwork of two characters, Zya and Lyra">
+          </button>
+          <figcaption><b>Zya & Lyra</b>Art trade with a friend</figcaption>
+        </figure>
+
+        <figure data-cat="art">
+          <button class="piece" data-t="Avery" data-m="Art trade with a friend">
+            <img src="images/avery.png" alt="artwork of a character named Avery">
+          </button>
+          <figcaption><b>Avery</b>Art trade with a friend</figcaption>
+        </figure>
+
+        <figure data-cat="art">
+          <button class="piece" data-t="Beach Episode" data-m="Fanart of Akito & Toya (Project Sekai)">
+            <img src="images/moments.png" alt="artwork of two characters, Akito and Toya, at the beach">
+          </button>
+          <figcaption><b>Beach Episode</b>Fanart of Akito & Toya (Project Sekai)</figcaption>
+        </figure>
+
+        <figure data-cat="art">
+          <button class="piece" data-t="Ripple" data-m="AP Drawing submission">
+            <img src="images/ripple.jpg" alt="artwork of a girl with a face obscured by a broken vase of flowers">
+          </button>
+          <figcaption><b>Ripple</b>AP Drawing submission</figcaption>
+        </figure>
+
+        <figure data-cat="art">
+          <button class="piece" data-t="Polarity" data-m="AP Drawing submission">
+            <img src="images/polarity.jpg" alt="artwork of a girl separated by saturated skies and monotonous ground">
+          </button>
+          <figcaption><b>Polarity</b>AP Drawing submission</figcaption>
+        </figure>
+
+        <figure data-cat="design">
+          <button class="piece" data-t="Currency Redesign" data-m="Redesign of the Vietnamese currency">
+            <img src="images/a3resized.png" alt="a redesigned vietnam currency">
+          </button>
+          <figcaption><b>Currency Redesign</b>Redesign of the Vietnamese currency</figcaption>
+        </figure>
+
+        <figure data-cat="design">
+          <button class="piece" data-t="Murder Mystery"
+            data-m="Design 1 symmetric balance exercise featuring original characters">
+            <img src="images/ex3.png" alt="artwork of a detective and his assistant">
+          </button>
+          <figcaption><b>Murder Mystery</b>Design 1 symmetric balance exercise featuring original characters
+          </figcaption>
+        </figure>
+
+        <figure data-cat="design">
+          <button class="piece" data-t="The Great Dictator" data-m="Design 1 typography exercise">
+            <img src="images/a1.png" alt="artwork of a detective and his assistant">
+          </button>
+          <figcaption><b>The Great Dictator</b>Design 1 typography exercise ft. quote from Charlie Chaplin
+          </figcaption>
+        </figure>
+
+        <figure data-cat="design">
+          <button class="piece" data-t="Demian Redesign" data-m="Cover redesign of Demian by Hermann Hesse, taking inspiration from Otl
+            Aicher">
+            <img src="images/A2.png" alt="book cover featuring a broken egg">
+          </button>
+          <figcaption><b>Demian Redesign</b>Cover redesign of Demian by Hermann Hesse, taking inspiration from Otl
+            Aicher</figcaption>
+        </figure>
+
+      </div>
+
+      <section class="about" id="about">
+        <h2>About</h2>
+        <div>
+          <p>Hello! Howdy! Top of the morning!</p>
+          <p>I've been drawing since I was a child, and happened to stumble upon the intersection of CS and design!
+            I've been looking into opportunities to learn more about UI/UX design these days.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <a class="mail" href="mailto:megan.xd.tran@gmail.com">megan.xd.tran@gmail.com</a>
+      </section>
+    </main>
+    <footer>Wow! You made it this far down!</footer>
+  </div>
+
+  <dialog id="lb" aria-label="Artwork preview">
+    <div class="lb">
+      <div id="lbArt"></div>
+      <div class="cap">
+        <div><b id="lbT"></b><span id="lbM"></span></div><button id="lbX" type="button">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
